@@ -1,6 +1,6 @@
 {
     "name": "dyno-php-lib/quantity-updater",
-    "description": "Small library, which could help you save some money an schadule quantity of Heroku Dynos for free.",
+    "description": "Small library, which could help you save some money and schedule quantity of Heroku Dynos for free.",
     "keywords": ["heroku", "dyno"],
     "type": "library",
     "license": "MIT",
