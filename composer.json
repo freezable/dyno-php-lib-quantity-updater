@@ -1,0 +1,22 @@
+{
+    "name": "dyno-php-lib/quantity-updater",
+    "description": "Small library, which could help you save some money an schadule quantity of Heroku Dynos for free.",
+    "keywords": ["heroku", "dyno"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [{
+        "name": "yehor",
+        "email": "yehor.chernyshov@gmail.com"
+    }],
+    "require": {
+        "php": "^5.6 | ^7.0 | ^8.0",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "DynoLib\\": "lib/"
+        }
+    }
+}
