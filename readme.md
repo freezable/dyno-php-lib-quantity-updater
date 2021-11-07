@@ -22,6 +22,7 @@ php dyno-quantity-updater.php HEROKU_TOKEN HEROKU_APP_NAME HEROKU_DYNO_NAME DESI
 ### how to stop dyno for weekend:
 - add new Job into Scheduler to disable dyno: `php dyno-quantity-updater.php HEROKU_TOKEN HEROKU_APP_NAME HEROKU_DYNO_NAME 0 Fri 22`
 - add new Job into Scheduler to enable dyno: `php dyno-quantity-updater.php HEROKU_TOKEN HEROKU_APP_NAME HEROKU_DYNO_NAME 1 Mon 6`
+- this jsobs should be startet hourly in 10th min.
 
 
 ## [Contributing](CONTTIBUTING.md)
