@@ -1,4 +1,5 @@
 # Dyno quantity updater (with help of Scheduler)
+Small library, which could help you save some money and schedule quantity of Heroku Dynos for free.
 
 ### Requirements 
 - installed free [Heroku Scheduler](https://elements.heroku.com/addons/scheduler)
