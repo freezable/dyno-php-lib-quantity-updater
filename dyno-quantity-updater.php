@@ -3,8 +3,8 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use DynoLib\App;
+use DynoLib\Factory;
 
-$app = new App();
-
-$app->run($argv);
+(new Factory())
+    ->createApp()
+    ->run($argv);

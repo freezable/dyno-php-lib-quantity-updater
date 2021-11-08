@@ -23,29 +23,13 @@ class Connector
     }
 
     /**
-     * @param string $appName
-     * @param string $dynoName
-     * @param int $qty
-     * @return bool
-     * @throws Exception
-     */
-    public function setDynoQty($appName, $dynoName, $qty)
-    {
-        $endpoint = sprintf(self::FORMATION_ENDPOINT, $appName, $dynoName);
-        $payload = ['quantity' => $qty];
-        $response = $this->makeRequest($endpoint, self::METHOD_PATCH, $payload);
-
-        return $response['code'] == 200;
-    }
-
-    /**
      * @param string $endpoint
      * @param string $method
      * @param array $payload
      * @return string[]
      * @throws Exception
      */
-    protected function makeRequest($endpoint, $method, $payload = [])
+    public function makeRequest($endpoint, $method, $payload = [])
     {
         $headers = [
             'Content-Type: application/json',
