@@ -59,7 +59,8 @@ class Command
     }
 
     /**
-     * @return string|null
+     * @return                     string
+     * @SuppressWarnings("static")
      */
     public function getActionDay()
     {
@@ -69,13 +70,14 @@ class Command
     }
 
     /**
-     * @return string|null
+     * @return                     int
+     * @SuppressWarnings("static")
      */
     public function getActionHour()
     {   
         $hour = $this->getArgValue(self::ACTION_HOUR_ARG_KEY);
 
-        return $hour !== null ? $hour : DateHelper::getActualHour();
+        return $hour !== null ? intval($hour) : DateHelper::getActualHour();
     }
 
     /**

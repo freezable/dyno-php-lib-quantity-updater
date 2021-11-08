@@ -22,7 +22,7 @@ class Processor
     /**
      * @param string $appName
      * @param string $dynoName
-     * @param int $qty
+     * @param int    $qty
      * 
      * @return bool
      */
@@ -31,8 +31,8 @@ class Processor
         $endpoint = sprintf(Connector::FORMATION_ENDPOINT, $appName, $dynoName);
         $payload = ['quantity' => $qty];
         $response = $this->connector->makeRequest($endpoint, Connector::METHOD_PATCH, $payload);
-        $result = $response['code'] == 200;
-        if(!$result){
+        $result = $response['code'] == Connector::HTTP_OK;
+        if(!$result) {
             error_log($response['content']);
         }
 
@@ -40,9 +40,10 @@ class Processor
     }
 
     /**
-     * @param string $day
-     * @param int $hour
-     * @return bool
+     * @param                      string $day
+     * @param                      int    $hour
+     * @return                     bool
+     * @SuppressWarnings("static")
      */
     public function isReadyForUpdate($day, $hour)
     {

@@ -9,6 +9,7 @@ class Connector
     const BASE_URI = 'https://api.heroku.com';
     const FORMATION_ENDPOINT = 'apps/%s/formation/%s';
     const METHOD_PATCH = 'PATCH';
+    const HTTP_OK = 200;
     /**
      * @var string
      */
@@ -23,9 +24,9 @@ class Connector
     }
 
     /**
-     * @param string $endpoint
-     * @param string $method
-     * @param array $payload
+     * @param  string $endpoint
+     * @param  string $method
+     * @param  array  $payload
      * @return string[]
      * @throws Exception
      */
