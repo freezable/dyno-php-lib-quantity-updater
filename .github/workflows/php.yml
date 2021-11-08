@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  check:
 
     runs-on: ubuntu-latest
 
@@ -29,5 +29,14 @@ jobs:
 
     - name: PHPStan analyse of codebase
       run: composer run-script phpstan-check
+      if: ${{ always() }}
+
+    
+    - name: PHPStan analyse of codebase
+      run: composer run-script psalm-check
+      if: ${{ always() }}
+
+
+    
 
 

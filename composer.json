@@ -19,9 +19,11 @@
         ]
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.1"
+        "phpstan/phpstan": "^1.1",
+        "vimeo/psalm": "^4.12"
     },
     "scripts": {
-        "phpstan-check": "vendor/bin/phpstan analyse lib"
+        "phpstan-check": "vendor/bin/phpstan analyse lib",
+        "psalm-check": "vendor/bin/psalm"
     }
 }
