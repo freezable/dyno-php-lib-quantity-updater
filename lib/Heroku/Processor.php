@@ -40,14 +40,14 @@ class Processor
     }
 
     /**
-     * @param                      string $day
-     * @param                      int    $hour
+     * @param                      string[] $days
+     * @param                      int[]    $hours
      * @return                     bool
      * @SuppressWarnings("static")
      */
-    public function isReadyForUpdate($day, $hour)
+    public function isReadyForUpdate($days, $hours)
     {
-        return DateHelper::getActualWeekDay() === $day 
-            && DateHelper::getActualHour() === intval($hour);
+        return in_array(DateHelper::getActualWeekDay(), $days) 
+            && in_array(DateHelper::getActualHour(), $hours);
     }
 }

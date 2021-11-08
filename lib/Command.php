@@ -59,25 +59,35 @@ class Command
     }
 
     /**
-     * @return                     string
+     * @return                     string[]
      * @SuppressWarnings("static")
      */
-    public function getActionDay()
+    public function getActionDays()
     {
-        $day = $this->getArgValue(self::ACTION_DAY_ARG_KEY);
+        $days = $this->getArgValue(self::ACTION_DAY_ARG_KEY);
 
-        return $day !== null ? $day : DateHelper::getActualWeekDay();
+        return $days !== null
+            ? explode(',', $days)
+            : [DateHelper::getActualWeekDay()];
     }
 
     /**
-     * @return                     int
+     * @return                     int[]
      * @SuppressWarnings("static")
      */
-    public function getActionHour()
-    {   
-        $hour = $this->getArgValue(self::ACTION_HOUR_ARG_KEY);
+    public function getActionHours()
+    {
+        $hours = $this->getArgValue(self::ACTION_HOUR_ARG_KEY);
+        $actionHours = [DateHelper::getActualHour()];
+        if ($hours !== null) {
+            $actionHours = array_map(
+                function ($hour) {
+                    return intval($hour);
+                }, explode(',', $hours)
+            );
+        }
 
-        return $hour !== null ? intval($hour) : DateHelper::getActualHour();
+        return $actionHours;
     }
 
     /**

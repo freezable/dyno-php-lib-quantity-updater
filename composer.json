@@ -26,9 +26,16 @@
         "squizlabs/php_codesniffer": "^3.6"
     },
     "scripts": {
+        "quality-checks": [
+            "@phpstan-check",
+            "@psalm-check",
+            "@phpmnd-check",
+            "@phpmd-check"
+        ],
         "phpstan-check": "vendor/bin/phpstan analyse lib",
         "psalm-check": "vendor/bin/psalm",
         "phpmnd-check": "vendor/bin/phpmnd lib",
-        "phpmd-check": "vendor/bin/phpmd lib ansi phpmd.xml"
+        "phpmd-check": "vendor/bin/phpmd lib ansi phpmd.xml",
+        "phpcs-fix": "vendor/bin/phpcbf lib"
     }
 }

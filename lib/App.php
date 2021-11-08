@@ -19,7 +19,7 @@ class App
         $processor = $this->factory->createHerokuProcessor($command->getHerokuApiToken());
         $message = "skipped \n";
         $result = true;
-        if ($processor->isReadyForUpdate($command->getActionDay(), $command->getActionHour())) {
+        if ($processor->isReadyForUpdate($command->getActionDays(), $command->getActionHours())) {
             $result = $processor->updateDynoQty(
                 $command->getHerokuAppName(),
                 $command->getHerokuDynoName(),
