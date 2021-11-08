@@ -18,6 +18,7 @@ php dyno-quantity-updater.php HEROKU_TOKEN HEROKU_APP_NAME HEROKU_DYNO_NAME DESI
 - `DAY_OF_WEEK` - A textual representation of a day, three letters (Mon through Sun)
 - `HOUR` - 24-hour format of an hour without leading zeros (1 through 24)
 
+
 ### Example
 ### how to stop dyno for weekend:
 - add new Job into Scheduler to disable dyno: `php dyno-quantity-updater.php HEROKU_TOKEN HEROKU_APP_NAME HEROKU_DYNO_NAME 0 Fri 22`

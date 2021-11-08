@@ -2,26 +2,33 @@
 
 namespace DynoLib;
 
-use DynoLib\Heroku\Connector;
-
 class App
 {
+    /**
+     * @var Factory
+     */
+    protected $factory;
+
     /**
      * @return int
      * @throws \Exception
      */
     public function run(array $argv = [])
     {
-        $token = $argv[1];
-        $appName = $argv[2];
-        $dynoName = $argv[3];
-        $qty = $argv[4];
-        $result = true;
+        $command = $this->factory->createCommand($argv);
+        $processor = $this->factory->createHerokuProcessor($command->getHerokuApiToken());
         $message = "skipped \n";
-        if ($this->IsReadyForUpdate($argv[5], $argv[6])) {
-            $herokuConnector = new Connector($token);
-            $result = $herokuConnector->setDynoQty($appName, $dynoName, $qty);
-            $message = $result ? sprintf("new qty of %s dyno for %s app is: %d \n", $dynoName, $appName, $qty) : "fail\n";
+        $result = true;
+        if ($processor->isReadyForUpdate($command->getActionDay(), $command->getActionHour())) {
+            $result = $processor->updateDynoQty(
+                $command->getHerokuAppName(),
+                $command->getHerokuDynoName(),
+                $command->getHerokuDynoQty()
+            );
+
+            $message = $result
+                ? sprintf("New qty of %s dyno for %s app is: %d \n", $command->getHerokuAppName(), $command->getHerokuDynoName(), $command->getHerokuDynoQty())
+                : "fail\n";
         }
         echo $message;
 
@@ -29,15 +36,12 @@ class App
     }
 
     /**
-     * @param $day
-     * @param $hour
-     * @return bool
+     * @param Factory $factory
+     * 
+     * @return void
      */
-    protected function IsReadyForUpdate($day, $hour)
+    public function setFactory($factory)
     {
-        $actualDay = date('D');
-        $actualHour = intval(date('G')) + 1;
-
-        return $actualDay === $day && $actualHour === intval($hour);
+        $this->factory = $factory;
     }
 }
