@@ -2,6 +2,8 @@
 
 namespace DynoLib\Heroku;
 
+use DynoLib\DateHelper;
+
 class Processor
 {
     /**
@@ -27,10 +29,14 @@ class Processor
     public function updateDynoQty($appName, $dynoName, $qty)
     {
         $endpoint = sprintf(Connector::FORMATION_ENDPOINT, $appName, $dynoName);
-        $payload = ['quantity' => intval($qty)];
+        $payload = ['quantity' => $qty];
         $response = $this->connector->makeRequest($endpoint, Connector::METHOD_PATCH, $payload);
+        $result = $response['code'] == 200;
+        if(!$result){
+            error_log($response['content']);
+        }
 
-        return $response['code'] == 200;
+        return $result;
     }
 
     /**
@@ -40,9 +46,7 @@ class Processor
      */
     public function isReadyForUpdate($day, $hour)
     {
-        $actualDay = date('D');
-        $actualHour = intval(date('G')) + 1;
-
-        return $actualDay === $day && $actualHour === intval($hour);
+        return DateHelper::getActualWeekDay() === $day 
+            && DateHelper::getActualHour() === intval($hour);
     }
 }

@@ -53,7 +53,9 @@ class Command
      */
     public function getHerokuDynoQty()
     {
-        return $this->getArgValue(self::HEROKU_DYNO_QTY_ARG_KEY);
+        $qty = $this->getArgValue(self::HEROKU_DYNO_QTY_ARG_KEY);
+
+        return $qty !== null ? intval($qty) : null;
     }
 
     /**
@@ -61,15 +63,19 @@ class Command
      */
     public function getActionDay()
     {
-        return $this->getArgValue(self::ACTION_DAY_ARG_KEY);
+        $day = $this->getArgValue(self::ACTION_DAY_ARG_KEY);
+
+        return $day !== null ? $day : DateHelper::getActualWeekDay();
     }
 
     /**
      * @return string|null
      */
     public function getActionHour()
-    {
-        return $this->getArgValue(self::ACTION_HOUR_ARG_KEY);
+    {   
+        $hour = $this->getArgValue(self::ACTION_HOUR_ARG_KEY);
+
+        return $hour !== null ? $hour : DateHelper::getActualHour();
     }
 
     /**
@@ -79,6 +85,6 @@ class Command
      */
     protected function getArgValue($key)
     {
-        return $this->argv[$key] ? $this->argv[$key] : null;
+        return array_key_exists($key, $this->argv) ? trim($this->argv[$key]) : null;
     }
 }
