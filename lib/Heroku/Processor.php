@@ -31,7 +31,7 @@ class Processor
         $endpoint = sprintf(Connector::FORMATION_ENDPOINT, $appName, $dynoName);
         $payload = ['quantity' => $qty];
         $response = $this->connector->makeRequest($endpoint, Connector::METHOD_PATCH, $payload);
-        $result = $response['code'] == 200;
+        $result = $response['code'] == Connector::HTTP_OK;
         if(!$result){
             error_log($response['content']);
         }

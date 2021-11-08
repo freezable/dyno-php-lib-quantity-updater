@@ -30,10 +30,13 @@ jobs:
     - name: PHPStan analyse of codebase
       run: composer run-script phpstan-check
       if: ${{ always() }}
-
     
-    - name: PHPStan analyse of codebase
+    - name: Psalm analyse of codebase
       run: composer run-script psalm-check
+      if: ${{ always() }}
+    
+    - name: PHP Magic Number Detector analyse of codebase
+      run: composer run-script phpmnd-check
       if: ${{ always() }}
 
 
