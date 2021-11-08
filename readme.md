@@ -1,6 +1,8 @@
 # Dyno quantity updater (with help of Scheduler)
 Small library, which could help you save some money and schedule quantity of Heroku Dynos for free.
 
+[![PHP Composer](https://github.com/yehor-chernyshov/dyno-php-lib-quantity-updater/actions/workflows/php.yml/badge.svg)](https://github.com/yehor-chernyshov/dyno-php-lib-quantity-updater/actions/workflows/php.yml)
+
 ### Requirements 
 - Dynos types Hobby or Professional
 - installed free [Heroku Scheduler](https://elements.heroku.com/addons/scheduler)
