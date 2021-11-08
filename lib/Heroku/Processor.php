@@ -43,6 +43,7 @@ class Processor
      * @param string $day
      * @param int $hour
      * @return bool
+     * @SuppressWarnings("static")
      */
     public function isReadyForUpdate($day, $hour)
     {

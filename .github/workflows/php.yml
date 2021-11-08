@@ -38,6 +38,10 @@ jobs:
     - name: PHP Magic Number Detector analyse of codebase
       run: composer run-script phpmnd-check
       if: ${{ always() }}
+    
+    - name: PHP Mess Detector analyse of codebase
+      run: composer run-script phpmd-check
+      if: ${{ always() }}
 
 
     

@@ -21,11 +21,13 @@
     "require-dev": {
         "phpstan/phpstan": "^1.1",
         "vimeo/psalm": "^4.12",
-        "povils/phpmnd": "^2.4"
+        "povils/phpmnd": "^2.4",
+        "phpmd/phpmd": "^2.10"
     },
     "scripts": {
         "phpstan-check": "vendor/bin/phpstan analyse lib",
         "psalm-check": "vendor/bin/psalm",
-        "phpmnd-check": "vendor/bin/phpmnd lib"
+        "phpmnd-check": "vendor/bin/phpmnd lib",
+        "phpmd-check": "vendor/bin/phpmd lib ansi phpmd.xml"
     }
 }
