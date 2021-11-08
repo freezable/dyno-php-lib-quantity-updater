@@ -59,7 +59,7 @@ class Command
     }
 
     /**
-     * @return string
+     * @return                     string
      * @SuppressWarnings("static")
      */
     public function getActionDay()
@@ -70,7 +70,7 @@ class Command
     }
 
     /**
-     * @return int
+     * @return                     int
      * @SuppressWarnings("static")
      */
     public function getActionHour()

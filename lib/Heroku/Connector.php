@@ -24,9 +24,9 @@ class Connector
     }
 
     /**
-     * @param string $endpoint
-     * @param string $method
-     * @param array $payload
+     * @param  string $endpoint
+     * @param  string $method
+     * @param  array  $payload
      * @return string[]
      * @throws Exception
      */
