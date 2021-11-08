@@ -11,14 +11,14 @@ Small library, which could help you save some money and schedule quantity of Her
 ## How to use
 - install into your project `composer require dyno-php-lib/quantity-updater`
 ```
-php dyno-quantity-updater.php HEROKU_TOKEN HEROKU_APP_NAME HEROKU_DYNO_NAME DESIRED_HEROKU_DYNO_QUANTITY DAY_OF_WEEK HOUR
+php dyno-quantity-updater.php HEROKU_TOKEN HEROKU_APP_NAME HEROKU_DYNO_NAME DESIRED_HEROKU_DYNO_QUANTITY DAYS_OF_WEEK HOURS
 ```
 - `HEROKU_TOKEN` - Heroku API Key
 - `HEROKU_APP_NAME` - Heroku app name
 - `HEROKU_DYNO_NAME` - dyno name, defined in Procfile (for example: web)
 - `DESIRED_HEROKU_DYNO_QUANTITY` - qty of Dynos you want to have after update 
-- `DAY_OF_WEEK` - A textual representation of a day, three letters (Mon through Sun)
-- `HOUR` - 24-hour format of an hour without leading zeros (1 through 24)
+- `DAYS_OF_WEEK` - comma separated list of an textual representation of a day, three letters (Mon through Sun)
+- `HOURS` - comma separated list of 24-hour format of an hour without leading zeros (1 through 24)
 
 
 ### Example
