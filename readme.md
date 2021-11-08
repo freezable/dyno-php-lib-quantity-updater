@@ -13,8 +13,8 @@ php dyno-quantity-updater.php HEROKU_TOKEN HEROKU_APP_NAME HEROKU_DYNO_NAME DESI
 - `HEROKU_TOKEN` - Heroku API Key
 - `HEROKU_APP_NAME` - Heroku app name
 - `HEROKU_DYNO_NAME` - dyno name, defined in Procfile (for example: web)
-- `DAY_OF_WEEK` - A textual representation of a day, three letters (Mon through Sun)
-- `HOUR` - 24-hour format of an hour without leading zeros (1 through 24)
+- `DAY_OF_WEEK` - A textual representation of a day, three letters (Mon through Sun). Fallback: actual day of week.
+- `HOUR` - 24-hour format of an hour without leading zeros (1 through 24). Fallback: actual hour.
 
 ### Example
 ### how to stop dyno for weekend:
