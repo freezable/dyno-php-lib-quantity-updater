@@ -9,39 +9,30 @@ class App
      */
     protected $factory;
 
+    public function __construct()
+    {
+        $this->factory = new Factory();
+    }
+
     /**
-     * @return int
+     * @return Result
      * @throws \Exception
      */
-    public function run(array $argv = [])
+    public function run()
     {
-        $command = $this->factory->createCommand($argv);
-        $processor = $this->factory->createHerokuProcessor($command->getHerokuApiToken());
-        $message = "skipped \n";
-        $result = true;
-        if ($processor->isReadyForUpdate($command->getActionDays(), $command->getActionHours())) {
-            $result = $processor->updateDynoQty(
-                $command->getHerokuAppName(),
-                $command->getHerokuDynoName(),
-                $command->getHerokuDynoQty()
-            );
+        $processor = $this->factory->createHerokuProcessor();
+        $update = $this->factory->createUpdate();
 
-            $message = $result
-                ? sprintf("New qty of %s dyno for %s app is: %d \n", $command->getHerokuAppName(), $command->getHerokuDynoName(), $command->getHerokuDynoQty())
-                : "fail\n";
+        if (!$processor->isReadyForUpdate($update)) {
+            return new Result(true, "skipped \n");
         }
-        echo $message;
 
-        return $result ? 0 : 1;
+        $result = $processor->updateDynoQty($update);
+        $message = $result
+            ? sprintf("New qty of %s dyno for %s app is: %d \n", $update->getHerokuAppName(), $update->getHerokuDynoName(), $update->getHerokuDynoQty())
+            : "fail\n";
+
+        return new Result($result, $message);
     }
 
-    /**
-     * @param Factory $factory
-     * 
-     * @return void
-     */
-    public function setFactory($factory)
-    {
-        $this->factory = $factory;
-    }
 }
